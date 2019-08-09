@@ -26,12 +26,10 @@ var repository = [ /* Pokedex Object Array*/
   }
 ];
 
-for(var i=0;i<repository.length;i++){ /* For Loop Applied To Pokedex Object Array */
-
-  document.write("<br>"+"Name: "+repository[i].name + "  | Height: "+repository[i].height+" | Type: "+repository[i].type);
-
-  if(repository[i].height > 5){
-       document.write("  (- Wow that is a big Pokemon!)")
+repository.forEach(function(property) { /* Applied For Each Loop To Pokedex Array */
+  document.write("<br>"+"Name: "+property.name + "  | Height: "+property.height+" | Type: "+property.type);
+  if(property.height > 5){
+     document.write("  (- Wow that is a big Pokemon!)")
 }
-  document.write("<p>");
-}
+document.write("<p>");
+});
