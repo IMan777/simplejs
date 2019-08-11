@@ -27,15 +27,17 @@ var pokemonRepository = (function () { /*Pokedex Object Array Placed Inside IIFE
   }
 ];
 
-  return {
-    add: function(name,height,type) { /*Add Additional Pokemon Attributes To Object Array*/
-      repository.push(name,height,type);
 
-    },
-    catchAll: function() {
-      return repository;
-    },
+  function add(name,height,type) { /*Add Additional Pokemon Attributes To Object Array*/
+    repository.push(name,height,type);
 
+  }
+    function catchAll() {
+    return repository;
+  }
+    return {
+    add: add,
+    catchAll: catchAll
   };
 })();
 
