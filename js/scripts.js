@@ -1,4 +1,5 @@
-var repository = [ /* Pokedex Object Array*/
+var pokemonRepository = (function () { /*Pokedex Object Array Placed Inside IIFE*/
+  var repository = [
   {
       name:'Blubasaur',
       height:2.04,
@@ -26,7 +27,23 @@ var repository = [ /* Pokedex Object Array*/
   }
 ];
 
-repository.forEach(function(property) { /* Applied For Each Loop To Pokedex Array */
+  return {
+    add: function(name,height,type) { /*Add Additional Pokemon Attributes To Object Array*/
+      repository.push(name,height,type);
+
+    },
+    catchAll: function() {
+      return repository;
+    },
+
+  };
+})();
+
+console.log(pokemonRepository.catchAll());
+pokemonRepository.add({ name:'Squirtle',height:1.08,type:['Water']});
+console.log(pokemonRepository.catchAll());
+
+pokemonRepository.catchAll().forEach(function(property) { /* Applied For Each Loop To Pokedex Array */
   document.write("<br>"+"Name: "+property.name + "  | Height: "+property.height+" | Type: "+property.type);
   if(property.height > 5){
      document.write("  (- Wow that is a big Pokemon!)")
