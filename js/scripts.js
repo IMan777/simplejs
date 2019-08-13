@@ -24,31 +24,48 @@ var pokemonRepository = (function () { /*Pokedex Object Array Placed Inside IIFE
       name:'Gyarados',
       height:21.04,
       type:['Water','Flying']
+  },
+   {
+      name:'Squirtle',
+      height:1.08,
+      type:['Water']
   }
 ];
+   function showDetails(pokemon) {
+      console.log("Name: "+pokemon.name + "  | Height: "+pokemon.height+" | Type: "+pokemon.type); /*Pokemon Attributes Displayed in Console Log*/
+  }
+  function addListItem(pokemon){
+      var pokelist = document.querySelector('.pokemon-list');  /*List Item & Button Tags Together with CSS-Class Styles Created */
+      var listitem = document.createElement('li');
+      pokelist.appendChild(listitem);
+      var btn = document.createElement('button');
+      listitem.appendChild(btn);
+      btn.innerText=pokemon.name;
+      btn.classList.add('poke-btn');
+      listitem.classList.add('pokeitem');
+      btn.addEventListener('click', function(event) { /*Click Button Event Listener Used To Display showDetails Function Properties */
+      showDetails(pokemon);
+    });
+  }
 
 
   function add(name,height,type) { /*Add Additional Pokemon Attributes To Object Array*/
-    repository.push(name,height,type);
+      repository.push(name,height,type);
 
   }
-    function catchAll() {
-    return repository;
+    function catchAll() { /* Function Used To Return Pokedex Object Array*/
+      return repository;
   }
-    return {
-    add: add,
-    catchAll: catchAll
+    return {  /*Return All Previous Function In Order To Be Available Outside Of IIFE */
+      add: add,
+      catchAll: catchAll,
+      addListItem: addListItem,
   };
 })();
 
-console.log(pokemonRepository.catchAll());
-pokemonRepository.add({ name:'Squirtle',height:1.08,type:['Water']});
-console.log(pokemonRepository.catchAll());
+/*pokemonRepository.add({ name:'',height:'',type:[]}); */ /*Reserved To Add Additional Pokemon To Pokedex Object Array */
 
-pokemonRepository.catchAll().forEach(function(property) { /* Applied For Each Loop To Pokedex Array */
-  document.write("<br>"+"Name: "+property.name + "  | Height: "+property.height+" | Type: "+property.type);
-  if(property.height > 5){
-     document.write("  (- Wow that is a big Pokemon!)")
-}
-document.write("<p>");
+pokemonRepository.catchAll().forEach(function(property) {
+
+      pokemonRepository.addListItem(property); /*For Each Used To Cycle Through addListItem Function Properties */
 });
