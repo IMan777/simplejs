@@ -3,3 +3,29 @@ body{
   color:black;
   font-weight: bold;
 }
+.poke-btn{
+  border:2px green solid; /*Pokedex Array Style Attributes */
+  width:100%;
+  border-radius:5px;
+  padding:5%;
+  font-weight:bold;
+  box-shadow:2px 2px;
+}
+.poke-btn:hover{
+  background-color:black;
+  border:2px red solid;
+  color:white;
+
+}
+.pokeitem{
+  list-style-type:none;
+  margin-bottom:15px;
+  padding-right:10%
+
+}
+section{
+  border:2px blue outset;
+  border-radius:10px;
+  width:25%;
+  box-shadow:2px 2px;
+ }
