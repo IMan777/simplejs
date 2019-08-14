@@ -1,10 +1,11 @@
 body{
-  background-color: lightblue;
+  background-color:white;
   color:black;
   font-weight: bold;
 }
+/*Pokedex Array Style Attributes Start */
 .poke-btn{
-  border:2px green solid; /*Pokedex Array Style Attributes */
+  border:2px green solid;
   width:100%;
   border-radius:5px;
   padding:5%;
@@ -24,8 +25,12 @@ body{
 
 }
 section{
-  border:2px blue outset;
-  border-radius:10px;
+  border:2px black outset;
+  border-radius:2px;
+  background-image: linear-gradient( 70deg, lightblue ,white);
+  color:black;
   width:25%;
   box-shadow:2px 2px;
+  margin:auto;
  }
+/*Pokedex Array Style Attributes End */
