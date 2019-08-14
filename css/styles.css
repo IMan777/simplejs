@@ -33,4 +33,8 @@ section{
   box-shadow:2px 2px;
   margin:auto;
  }
+ h3{
+   text-align: center;
+   color:black;
+ }
 /*Pokedex Array Style Attributes End */
