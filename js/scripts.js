@@ -1,40 +1,8 @@
 var pokemonRepository = (function () { /*Pokedex Object Array Placed Inside IIFE*/
-  var repository = [
-  {
-      name:'Blubasaur',
-      height:2.04,
-      type:['Grass','Poison']
-  },
-  {
-      name:'Charizard',
-      height:5.07,
-      type:['Fire','Flying']
-  },
-  {
-      name:'Pikachu',
-      height:1.04,
-      type:['Electric']
-  },
-  {
-      name:'Dragonite',
-      height:7.03,
-      type:['Dragon','Flying']
-  },
-  {
-      name:'Gyarados',
-      height:21.04,
-      type:['Water','Flying']
-  },
-   {
-      name:'Squirtle',
-      height:1.08,
-      type:['Water']
-  }
-];
-   function showDetails(pokemon) {
-      console.log("Name: "+pokemon.name + "  | Height: "+pokemon.height+" | Type: "+pokemon.type); /*Pokemon Attributes Displayed in Console Log*/
-  }
-  function addListItem(pokemon){
+  var repository = [ ];
+
+ var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+ function addListItem(pokemon){
       var pokelist = document.querySelector('.pokemon-list');  /*List Item & Button Tags Together with CSS-Class Styles Created */
       var listitem = document.createElement('li');
       pokelist.appendChild(listitem);
@@ -48,24 +16,59 @@ var pokemonRepository = (function () { /*Pokedex Object Array Placed Inside IIFE
     });
   }
 
-
-  function add(name,height,type) { /*Add Additional Pokemon Attributes To Object Array*/
-      repository.push(name,height,type);
+ function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+    console.log(item);
+    });
+  }
+function add(name) { /*Add Additional Pokemon Attributes To Object Array*/
+      repository.push(name);
 
   }
-    function catchAll() { /* Function Used To Return Pokedex Object Array*/
+
+  function catchAll() { /* Function Used To Return Pokedex Object Array*/
       return repository;
   }
-    return {  /*Return All Previous Function In Order To Be Available Outside Of IIFE */
+
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        var pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (error) {
+      console.error(error);
+    })
+  }
+  function loadDetails(item) {
+    var url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = Object.keys(details.types);
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+return {  /*Return All Previous Function In Order To Be Available Outside Of IIFE */
       add: add,
       catchAll: catchAll,
       addListItem: addListItem,
+      loadList: loadList,
+      loadDetails: loadDetails
   };
 })();
 
-/*pokemonRepository.add({ name:'',height:'',type:[]}); */ /*Reserved To Add Additional Pokemon To Pokedex Object Array */
+pokemonRepository.loadList().then(function() {
 
-pokemonRepository.catchAll().forEach(function(property) {
-
-      pokemonRepository.addListItem(property); /*For Each Used To Cycle Through addListItem Function Properties */
+  pokemonRepository.catchAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
 });
