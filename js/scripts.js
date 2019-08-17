@@ -62,13 +62,13 @@ function add(name) { /*Add Additional Pokemon Attributes To Object Array*/
 /*Model Definition Start*/
 function showModal(item){
 
-    var $modalContainer = document.querySelector('#modal-container');
-    $modalContainer.innerHTML = '';
-    $modalContainer.classList.add('is-visible');
+    var modalContainer = document.querySelector('#modal-container');
+    modalContainer.innerHTML = '';
+    modalContainer.classList.add('is-visible');
 
     var pokemodal = document.createElement('div');
     pokemodal.classList.add('modal');
-    $modalContainer.appendChild(pokemodal);
+    modalContainer.appendChild(pokemodal);
 
 
     var closeModalBtn = document.createElement('button');
@@ -99,24 +99,24 @@ function showModal(item){
   }
 
 function hideModal() {
-    var $modalContainer = document.querySelector('#modal-container');
-    $modalContainer.classList.remove('is-visible');
+    var modalContainer = document.querySelector('#modal-container');
+    modalContainer.classList.remove('is-visible');
   }
 
 window.addEventListener('keydown', function(event) {
-    var $modalContainer = document.querySelector('#modal-container');
+    var modalContainer = document.querySelector('#modal-container');
     if (
       event.key === 'Escape' &&
-      $modalContainer.classList.contains('is-visible')
+      modalContainer.classList.contains('is-visible')
     ) {
       hideModal();
     }
   });
 
-  var $modalContainer = document.querySelector('#modal-container');
-  $modalContainer.addEventListener('click', function(event) {
+  var modalContainer = document.querySelector('#modal-container');
+  modalContainer.addEventListener('click', function(event) {
     var target = event.target;
-    if (target === $modalContainer) {
+    if (target === modalContainer) {
       hideModal();
     }
   });
