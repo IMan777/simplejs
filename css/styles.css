@@ -121,3 +121,20 @@ body{
       width: 25%;
       height: auto;
 }
+/*Model Style Attributes Start*/
+header{
+      display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 80%;
+    padding: 2px;
+    background-color:gold;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow:2px 2px grey; 
+    
+    
+}
