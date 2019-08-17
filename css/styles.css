@@ -5,7 +5,6 @@ body{
 }
 /*Pokedex Array Style Attributes Start */
 .poke-btn{
-    border:2px green solid;
     width:100%;
     border-radius:5px;
     padding:5%;
@@ -16,14 +15,13 @@ body{
     box-shadow:2px 2px;
 }
 .poke-btn:hover{
-    background-color:black;
-    border:2px red solid;
-    color:white;
+    background-color:gold;
+    color:navy;
 
 }
 .pokeitem{
     list-style-type:none;
-      margin-bottom:15px;
+    margin-bottom:15px;
     padding-right:10%
 
 }
@@ -42,7 +40,7 @@ body{
  #page-title{
      font-family:"Pokemon Solid";
      text-align: center;
-     color:black;
+     color:navy;
 }
 /*Pokedex Array Style Attributes End */
 
